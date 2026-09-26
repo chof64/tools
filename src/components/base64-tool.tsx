@@ -14,9 +14,9 @@ type Mode = "encode" | "decode";
 type InputType = "text" | "file";
 
 const TEXTAREA_CLASS =
-	"w-full rounded-lg border border-border bg-muted p-4 font-mono text-sm outline-none focus:ring-2 focus:ring-ring/50";
+	"w-full rounded-2xl border border-border/70 bg-background/75 p-4 font-mono text-sm leading-6 shadow-inner outline-none transition focus:border-ring focus:ring-2 focus:ring-ring/30";
 const INPUT_CLASS =
-	"w-full rounded-lg border border-border bg-muted px-3 py-2 font-mono text-sm outline-none focus:ring-2 focus:ring-ring/50";
+	"w-full rounded-xl border border-border/70 bg-background/75 px-3 py-2.5 font-mono text-sm shadow-inner outline-none transition focus:border-ring focus:ring-2 focus:ring-ring/30";
 
 function arrayBufferToBase64(buffer: ArrayBuffer): string {
 	const bytes = new Uint8Array(buffer);
@@ -87,7 +87,7 @@ function DropZone({
 				if (file) onFile(file);
 			}}
 			className={cn(
-				"flex cursor-pointer flex-col items-center justify-center gap-1 rounded-lg border-2 border-dashed px-4 py-8 text-center transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
+				"flex cursor-pointer flex-col items-center justify-center gap-1 rounded-2xl border-2 border-dashed px-4 py-10 text-center transition-all outline-none focus-visible:ring-2 focus-visible:ring-ring/40",
 				dragging
 					? "border-primary bg-primary/5"
 					: "border-border bg-muted/50 hover:border-primary/50 hover:bg-muted",
@@ -414,14 +414,14 @@ export default function Base64Tool() {
 
 	return (
 		<div className="space-y-4">
-			<Card>
-				<CardHeader>
-					<CardTitle>Base64 Encoder / Decoder</CardTitle>
+			<Card className="tool-panel gap-0 py-0">
+				<CardHeader className="border-b border-border/60 px-5 py-5 sm:px-6">
+					<CardTitle>Conversion workspace</CardTitle>
 					<CardDescription>
-						Encode text or files to Base64, or decode Base64 back to text or
-						downloadable files. Everything runs locally in your browser.
+						Choose encode or decode, then work with text or a file. Everything
+						stays in this browser.
 					</CardDescription>
-					<CardAction>
+					<CardAction className="col-start-1 row-start-3 self-center justify-self-start sm:col-start-2 sm:row-span-2 sm:row-start-1 sm:justify-self-end">
 						<div className="flex flex-col items-end gap-2">
 							<div className="flex gap-2">
 								<Button
@@ -458,7 +458,7 @@ export default function Base64Tool() {
 						</div>
 					</CardAction>
 				</CardHeader>
-				<CardContent className="space-y-4">
+				<CardContent className="space-y-5 px-5 py-5 sm:px-6 sm:py-6">
 					{inputType === "file" ? (
 						isEncode ? (
 							<FileEncodePanel />

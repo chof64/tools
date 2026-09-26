@@ -40,40 +40,40 @@ export default function GenerateKeys() {
   };
 
   return (
-    <div className='space-y-8'>
+    <div className="grid gap-6 lg:grid-cols-2">
       {/* Private Key Section */}
-      <Card>
-        <CardHeader>
-          <CardTitle>JWT Private Key</CardTitle>
+      <Card className="tool-panel gap-0 py-0">
+        <CardHeader className="border-b border-border/60 px-5 py-5 sm:px-6">
+          <CardTitle>Private signing key</CardTitle>
           <CardDescription>
             This private key is used to sign your JWTs. Keep it secure and never
             share it.
           </CardDescription>
-          <CardAction>
+          <CardAction className="col-start-1 row-start-3 self-center justify-self-start sm:col-start-2 sm:row-span-2 sm:row-start-1 sm:justify-self-end">
             <Button onClick={copyPrivate}>Copy</Button>
           </CardAction>
         </CardHeader>
-        <CardContent>
-          <pre className="overflow-x-auto p-4 h-64 rounded-lg bg-muted font-mono text-sm leading-none wrap-break-word whitespace-pre-wrap">
+        <CardContent className="px-5 py-5 sm:px-6 sm:py-6">
+          <pre className="tool-code h-72 overflow-x-auto p-4 font-mono text-sm leading-6 wrap-break-word whitespace-pre-wrap">
             <code>{privateKey}</code>
           </pre>
         </CardContent>
       </Card>
 
       {/* JWKS Section */}
-      <Card>
-        <CardHeader>
+      <Card className="tool-panel gap-0 py-0">
+        <CardHeader className="border-b border-border/60 px-5 py-5 sm:px-6">
           <CardTitle>JWKS (JSON Web Key Set)</CardTitle>
           <CardDescription>
             This JWKS contains your public key for verifying JWT signatures. Share
             it with clients.
           </CardDescription>
-          <CardAction>
+          <CardAction className="col-start-1 row-start-3 self-center justify-self-start sm:col-start-2 sm:row-span-2 sm:row-start-1 sm:justify-self-end">
             <Button onClick={copyJwks}>Copy</Button>
           </CardAction>
         </CardHeader>
-        <CardContent>
-          <pre className="overflow-x-auto p-4 h-64 rounded-lg bg-muted font-mono text-sm leading-none wrap-break-word whitespace-pre-wrap">
+        <CardContent className="px-5 py-5 sm:px-6 sm:py-6">
+          <pre className="tool-code h-72 overflow-x-auto p-4 font-mono text-sm leading-6 wrap-break-word whitespace-pre-wrap">
             <code>{jwks}</code>
           </pre>
         </CardContent>

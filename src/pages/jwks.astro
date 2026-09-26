@@ -1,10 +1,20 @@
 ---
 import MainLayout from "~/layouts/layout-main.astro";
+import ToolPageHeader from "~/components/tool-page-header.astro";
 import GenerateKeys from "~/components/generate-keys.tsx";
 ---
 
-<MainLayout title="JWKS Generator | Dev Tools">
-	<main class="container min-h-[calc(100vh-3rem)] space-y-8 py-8">
-		<GenerateKeys client:load />
-	</main>
+<MainLayout
+  title="JWKS Generator | Tools"
+  description="Generate an RS256 private key and matching public JWKS locally in your browser."
+>
+  <main class="container flex-1 py-8 sm:py-10">
+    <ToolPageHeader
+      title="JWKS Generator"
+      description="Generate an RS256 signing key and matching public JSON Web Key Set for JWT verification."
+      privacyNote="Keys are generated locally"
+      icon="key"
+    />
+    <GenerateKeys client:load />
+  </main>
 </MainLayout>

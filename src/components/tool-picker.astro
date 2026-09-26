@@ -1,100 +1,60 @@
 ---
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "~/components/ui/card";
-
 interface Tool {
-	href: string;
-	title: string;
-	description: string;
-	icon: string;
+  href: string;
+  title: string;
+  caption: string;
+  icon: "key" | "binary";
 }
 
+const base = import.meta.env.BASE_URL;
+
 const tools: Tool[] = [
-	{
-		href: "/tools/jwks/",
-		title: "JWKS Generator",
-		description:
-			"Generate a JWT private key and matching JSON Web Key Set (JWKS) for signing and verifying JWTs.",
-		icon: "key",
-	},
-	{
-		href: "/tools/base64/",
-		title: "Base64 Encoder / Decoder",
-		description:
-			"Encode text to Base64 or decode Base64 back to text. UTF-8 safe.",
-		icon: "binary",
-	},
+  {
+    href: base + "jwks/",
+    title: "JWKS Generator",
+    caption: "Generate signing keys and a matching public JWKS.",
+    icon: "key",
+  },
+  {
+    href: base + "base64/",
+    title: "Base64",
+    caption: "Encode or decode text and files locally.",
+    icon: "binary",
+  },
 ];
 ---
 
-<section class="space-y-2 text-center">
-	<h1 class="text-2xl font-semibold">Developer Tools</h1>
-	<p class="text-muted-foreground">
-		Free, client-side tools. Everything runs in your browser — nothing leaves
-		your device.
-	</p>
-</section>
-
-<div class="grid gap-4 sm:grid-cols-2">
-	{
-		tools.map(({ href, title, description, icon }) => (
-			<a
-				href={href}
-				class="transition-opacity hover:opacity-80"
-				aria-label={title}
-			>
-				<Card class="h-full cursor-pointer">
-					<CardHeader>
-						{icon === "key" ? (
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="20"
-								height="20"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								class="size-5 text-muted-foreground"
-							>
-								<path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4" />
-								<path d="m21 2-9.6 9.6" />
-								<circle cx="7.5" cy="15.5" r="5.5" />
-							</svg>
-						) : (
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="20"
-								height="20"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								class="size-5 text-muted-foreground"
-							>
-								<rect x="14" y="14" width="4" height="6" rx="2" />
-								<rect x="6" y="4" width="4" height="6" rx="2" />
-								<path d="M6 20h4" />
-								<path d="M14 10h4" />
-								<path d="M6 14h2v6" />
-								<path d="M14 4h2v6" />
-							</svg>
-						)}
-						<CardTitle>{title}</CardTitle>
-					</CardHeader>
-					<CardContent>
-						<CardDescription>{description}</CardDescription>
-					</CardContent>
-				</Card>
-			</a>
-		))
-	}
+<div class="launcher-grid">
+  {
+    tools.map(({ href, title, caption, icon }) => (
+      <a href={href} class="launcher-item group" aria-label={title}>
+        <span
+          class:list={[
+            "launcher-icon",
+            icon === "key" ? "launcher-icon-key" : "launcher-icon-binary",
+          ]}
+          aria-hidden="true"
+        >
+          {icon === "key" ? (
+            <svg viewBox="0 0 24 24" class="relative z-10 size-11" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"></path>
+              <path d="m21 2-9.6 9.6"></path>
+              <circle cx="7.5" cy="15.5" r="5.5"></circle>
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" class="relative z-10 size-11" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 7h2v4H7z"></path>
+              <path d="M15 13h2v4h-2z"></path>
+              <path d="M7 17h4"></path>
+              <path d="M13 7h4"></path>
+              <path d="M9 13H7v4"></path>
+              <path d="M15 7h2v4"></path>
+            </svg>
+          )}
+        </span>
+        <span class="launcher-label">{title}</span>
+        <span class="launcher-caption">{caption}</span>
+      </a>
+    ))
+  }
 </div>

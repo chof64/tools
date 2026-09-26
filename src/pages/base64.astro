@@ -1,10 +1,20 @@
 ---
 import MainLayout from "~/layouts/layout-main.astro";
+import ToolPageHeader from "~/components/tool-page-header.astro";
 import Base64Tool from "~/components/base64-tool.tsx";
 ---
 
-<MainLayout title="Base64 Encoder / Decoder | Dev Tools">
-	<main class="container min-h-[calc(100vh-3rem)] space-y-8 py-8">
-		<Base64Tool client:load />
-	</main>
+<MainLayout
+  title="Base64 Encoder / Decoder | Tools"
+  description="Encode and decode text or files as Base64 locally in your browser. Nothing is uploaded."
+>
+  <main class="container flex-1 py-8 sm:py-10">
+    <ToolPageHeader
+      title="Base64 Encoder / Decoder"
+      description="Convert text and files to or from Base64 without sending the input anywhere."
+      privacyNote="Text and files stay local"
+      icon="binary"
+    />
+    <Base64Tool client:load />
+  </main>
 </MainLayout>
