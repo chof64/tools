@@ -3,8 +3,35 @@ import MainLayout from "~/layouts/layout-main.astro";
 import ToolPicker from "~/components/tool-picker.astro";
 ---
 
-<MainLayout>
-	<main class="container min-h-[calc(100vh-3rem)] flex flex-col items-center justify-center gap-6 py-8">
-		<ToolPicker />
-	</main>
+<MainLayout
+  title="Tools | Private browser utilities"
+  description="A privacy-first collection of developer tools that process text, files, and generated keys entirely in your browser."
+>
+  <main class="container flex flex-1 flex-col items-center justify-center py-12 sm:py-16">
+    <section class="mb-10 max-w-2xl text-center sm:mb-12">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+        Private browser utilities
+      </p>
+      <h1 class="text-balance text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+        Pick a tool.
+      </h1>
+      <p class="mx-auto mt-4 max-w-xl text-pretty text-sm leading-6 text-muted-foreground sm:text-base">
+        A small collection of focused utilities with a simple rule: your inputs
+        stay on your device.
+      </p>
+    </section>
+
+    <ToolPicker />
+
+    <div class="mt-12 inline-flex max-w-xl items-start gap-3 rounded-2xl border border-white/70 bg-white/55 px-4 py-3 text-left text-xs leading-5 text-muted-foreground shadow-sm backdrop-blur-xl sm:mt-14">
+      <svg viewBox="0 0 24 24" class="mt-0.5 size-4 shrink-0 text-foreground" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="5" y="10" width="14" height="10" rx="2"></rect>
+        <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+      </svg>
+      <p>
+        There is no upload step. Files, text, and generated keys are handled by
+        browser APIs on this device.
+      </p>
+    </div>
+  </main>
 </MainLayout>

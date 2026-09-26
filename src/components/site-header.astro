@@ -1,0 +1,29 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<header class="container pt-4 sm:pt-6">
+  <nav class="site-nav" aria-label="Primary navigation">
+    <a
+      href={base}
+      class="group inline-flex items-center gap-2 rounded-xl px-2 py-1.5 font-semibold tracking-tight outline-none transition hover:bg-black/5 focus-visible:ring-2 focus-visible:ring-ring/50"
+      aria-label="Tools home"
+    >
+      <span class="grid size-8 place-items-center rounded-xl bg-foreground text-background shadow-sm transition group-hover:scale-105">
+        <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="4" y="4" width="6" height="6" rx="1.5"></rect>
+          <rect x="14" y="4" width="6" height="6" rx="1.5"></rect>
+          <rect x="4" y="14" width="6" height="6" rx="1.5"></rect>
+          <rect x="14" y="14" width="6" height="6" rx="1.5"></rect>
+        </svg>
+      </span>
+      <span>Tools</span>
+    </a>
+
+    <span class="privacy-pill" title="Tool inputs are processed in your browser">
+      <span class="privacy-dot" aria-hidden="true"></span>
+      <span class="hidden sm:inline">Runs locally</span>
+      <span class="sm:hidden">Local</span>
+    </span>
+  </nav>
+</header>

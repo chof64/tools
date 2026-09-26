@@ -1,5 +1,116 @@
 @import "./global.css";
 
 @utility container {
-  @apply px-4 md:px-8 max-w-2xl mx-auto;
+  @apply w-full max-w-6xl mx-auto px-5 sm:px-6 md:px-8;
+}
+
+@layer base {
+  html {
+    min-width: 320px;
+    min-height: 100%;
+    background: var(--background);
+  }
+
+  body {
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", sans-serif;
+    background-image:
+      radial-gradient(circle at 16% -8%, oklch(0.86 0.08 250 / 0.45), transparent 34rem),
+      radial-gradient(circle at 88% 8%, oklch(0.91 0.08 320 / 0.38), transparent 30rem),
+      linear-gradient(180deg, oklch(0.995 0.004 255), var(--background) 36rem);
+    background-attachment: fixed;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  ::selection {
+    background: oklch(0.78 0.12 250 / 0.35);
+  }
+}
+
+.site-nav {
+  @apply flex items-center justify-between rounded-2xl border border-white/70 bg-white/65 px-3 py-2 shadow-sm backdrop-blur-xl;
+}
+
+.privacy-pill {
+  @apply inline-flex items-center gap-2 rounded-full border border-border/70 bg-white/70 px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur-xl;
+}
+
+.privacy-dot {
+  @apply size-2 rounded-full;
+  background: oklch(0.7 0.16 155);
+  box-shadow: 0 0 0 4px oklch(0.7 0.16 155 / 0.12);
+}
+
+.launcher-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  width: min(100%, 560px);
+  gap: 2rem 1.25rem;
+}
+
+.launcher-item {
+  @apply flex min-w-0 flex-col items-center text-center outline-none;
+}
+
+.launcher-icon {
+  @apply relative grid size-24 place-items-center overflow-hidden rounded-[1.7rem] border border-white/55 text-white shadow-lg transition duration-200 ease-out sm:size-28 sm:rounded-[2rem];
+  box-shadow:
+    0 18px 34px -22px rgb(15 23 42 / 0.65),
+    inset 0 1px 0 rgb(255 255 255 / 0.45);
+}
+
+.launcher-icon::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.28), transparent 45%);
+  pointer-events: none;
+}
+
+.launcher-item:hover .launcher-icon,
+.launcher-item:focus-visible .launcher-icon {
+  transform: translateY(-4px) scale(1.035);
+  box-shadow:
+    0 24px 44px -22px rgb(15 23 42 / 0.72),
+    inset 0 1px 0 rgb(255 255 255 / 0.5);
+}
+
+.launcher-item:active .launcher-icon {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.launcher-icon-key {
+  background:
+    radial-gradient(circle at 28% 18%, rgb(255 255 255 / 0.34), transparent 32%),
+    linear-gradient(145deg, oklch(0.72 0.18 260), oklch(0.53 0.22 275));
+}
+
+.launcher-icon-binary {
+  background:
+    radial-gradient(circle at 28% 18%, rgb(255 255 255 / 0.34), transparent 32%),
+    linear-gradient(145deg, oklch(0.74 0.17 160), oklch(0.5 0.16 180));
+}
+
+.launcher-label {
+  @apply mt-3 text-sm font-semibold tracking-tight text-foreground;
+}
+
+.launcher-caption {
+  @apply mt-1 max-w-36 text-xs leading-5 text-muted-foreground;
+}
+
+.tool-panel {
+  @apply border border-white/70 bg-white/75 shadow-xl backdrop-blur-xl;
+  box-shadow:
+    0 24px 70px -46px rgb(15 23 42 / 0.5),
+    inset 0 1px 0 rgb(255 255 255 / 0.6);
+}
+
+.tool-code {
+  @apply rounded-2xl border border-border/70 bg-background/75 shadow-inner;
 }
