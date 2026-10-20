@@ -6,6 +6,7 @@ A static, client-side collection of developer tools that run directly in the bro
 
 - **Client-Side Only**: All processing happens in your browser, ensuring your data never leaves your device.
 - **JWT Key Generation**: Generates keys compatible with Convex Auth setup for secure authentication.
+- **Android Keystore Fingerprints**: Extract SHA-1 and SHA-256 certificate fingerprints from JKS and modern PKCS#12 keystores, using an optional `key.properties` file. All parsing and password handling stay in the browser.
 - **Base64 Encoder/Decoder**: Encode and decode text or files to and from Base64 (UTF-8 safe, files handled locally in the browser).
 - **Simple UI**: Clean, focused interface for each tool.
 - **No Installation Required**: Access directly via the hosted version – no dependencies to install.
@@ -26,6 +27,16 @@ The underlying process uses the `jose` library to:
 2. Export the private key in PKCS#8 format.
 3. Create a JWKS with the public key.
 4. Output the values for copying into your Convex environment variables.
+
+### Android Keystore Fingerprints
+
+Open `/keystore/`, select your Android `upload-keystore.jks` (or `.keystore`, `.p12`, `.pfx`), then optionally select `key.properties` with `storePassword` and `keyAlias`. You can enter these two values manually instead. Click **Get fingerprints** to display copyable SHA-1 and SHA-256 values for the signing certificate. The key password is not required; the tool never exports private key material.
+
+- Supports Java JKS and modern PBES2/AES PKCS#12 stores (which may still have `.jks` extensions).
+- Validates the store password and selects the certificate by alias when provided.
+- Legacy PKCS#12 encryption formats are not supported; use JKS or re-export with PBES2/AES if needed.
+- These are *upload certificate* fingerprints; Google Play App Signing may use a different signing certificate.
+- No keystore data, passwords, or properties are sent to a server or persisted by the app.
 
 ### Base64 Encoder/Decoder
 
